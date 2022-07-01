@@ -1,0 +1,25 @@
+Package: traficparis
+Title: Traitement Des Données De Trafic À Paris
+Version: 0.0.0.9000
+Authors@R: 
+    c(person(given = "Victor",
+             family = "Alexandre",
+             role = c("aut", "cre"),
+             email = "valexandre@leparisien.fr"),
+      person(given = "Le Parisien",
+             role = "cph"))
+Description: Fonctions et données historiques autour des données des
+    compteurs en opendata.
+License: MIT + file LICENSE
+Depends: 
+    R (>= 2.10)
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat
+VignetteBuilder: 
+    knitr
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1

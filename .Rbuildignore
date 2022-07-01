@@ -1,0 +1,7 @@
+
+^dev$
+^LICENSE\.md$
+^data-raw$
+^.*\.Rproj$
+^\.Rproj\.user$
+^traficparis\.Rproj$

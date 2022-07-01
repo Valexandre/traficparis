@@ -1,0 +1,58 @@
+---
+title: "flat_minimal.Rmd empty"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r development, include=FALSE}
+library(testthat)
+library(tidyverse)
+library(jsonlite)
+```
+
+<!--
+ You need to run the 'description' chunk in the '0-dev_history.Rmd' file before continuing your code there.
+-->
+
+```{r development-load}
+# Load already included functions if relevant
+pkgload::load_all(export_all = FALSE)
+```
+
+# Importe les données depuis une date
+
+```{r function-importe_les_donnees}
+#' importe_les_donnees Title
+#'
+#' @param date_debut une date en format yyyy-mm-dd
+#' @param date_fin une date en format yyyy-mm-dd
+#'
+#' @return une chaine de caractère à coller dans le navigateur pour télécharger les données
+#' @export
+#'
+#' @examples
+importe_les_donnees <- function(date_debut,date_fin) {
+  
+goodurl<-paste0("https://opendata.paris.fr/api/v2/catalog/datasets/comptages-routiers-permanents/exports/json?where=t_1h>%3Ddate%27",date_debut,"%27&where=t_1h<%3Ddate%27",date_fin,"%27&rows=-1&select=iu_ac%2Clibelle%2Ct_1h%2Cq%2Ck&pretty=false&timezone=UTC")
+return(goodurl)
+}
+```
+
+
+```{r examples-importe_les_donnees}
+importe_les_donnees(date_debut = "2022-01-01", date_fin = "2022-01-02")
+```
+
+```{r tests-importe_les_donnees}
+test_that("importe_les_donnees works", {
+expect_equal(importe_les_donnees(date_debut = "2022-01-01", date_fin = "2022-01-02"),"https://opendata.paris.fr/api/v2/catalog/datasets/comptages-routiers-permanents/exports/json?where=t_1h>%3Ddate%272022-01-01%27&where=t_1h<%3Ddate%272022-01-02%27&rows=-1&select=iu_ac%2Clibelle%2Ct_1h%2Cq%2Ck&pretty=false&timezone=UTC")
+})
+```
+
+
+```{r development-inflate, eval=FALSE}
+# Run but keep eval=FALSE to avoid infinite loop
+# Execute in the console directly
+fusen::inflate(flat_file = "dev/flat_minimal.Rmd", vignette_name = "Minimal")
+```
